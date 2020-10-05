@@ -18,7 +18,7 @@ public class Printer {
         double margin = 36;//12.5
         Paper paper = new Paper();
         paper.setImageableArea(margin, margin, paper.getWidth() - margin * 2, paper.getHeight()- margin * 2);
-        pageFormat.setOrientation(PageFormat.PORTRAIT);//LANDSCAPE
+        pageFormat.setOrientation(PageFormat.PORTRAIT);
         pageFormat.setPaper(paper);
         PageFormat validatePage = job.validatePage(pageFormat);
 

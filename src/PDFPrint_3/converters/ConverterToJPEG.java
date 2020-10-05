@@ -6,6 +6,7 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class ConverterToJPEG  implements ConverterPDF {
 
                 if (!destinationFile.exists()) {
                     destinationFile.mkdir();
-                    System.out.println("DESTINATION FOLDER CREATED -> " + destinationFile.getAbsolutePath());
+                    System.out.println("\ndestination folder created -> " + destinationFile.getAbsolutePath());
                 }
 
 
@@ -60,14 +61,16 @@ public class ConverterToJPEG  implements ConverterPDF {
                     images.add(fileTemp);
                 }
                 doc.close();
-
-            System.out.println("CONVERTER STOPTED.....");
-            System.out.println("IMAGE SAVED AT -> " + destinationFile.getAbsolutePath());
-            } catch (IOException e) {
-                e.printStackTrace();
+            System.out.println("image saved at -> " + destinationFile.getAbsolutePath());
+            } catch (FileNotFoundException ex) {
+                System.err.println(" destination folder do not found");
+                System.exit(0);
+            }
+            catch (IOException e) {
+                System.err.println("error to open file");
             }
         } else {
-            System.err.println(inputPDF.getName() + " FILE DOES NOT EXIST");
+               System.err.println(inputPDF.getName()  + " file does not exist");
         }
     }
 }
