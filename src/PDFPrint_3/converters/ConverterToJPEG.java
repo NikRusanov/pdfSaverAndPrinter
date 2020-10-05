@@ -18,6 +18,7 @@ public class ConverterToJPEG  implements ConverterPDF {
 
     public ConverterToJPEG(String dest) {
         destination = dest;
+        images = new ArrayList<>();
     }
 
     public void setInputPDF(File inputPDF) {
@@ -33,8 +34,6 @@ public class ConverterToJPEG  implements ConverterPDF {
     }
 
     public void convert()  {
-        images = new ArrayList<>();
-
         if (inputPDF.exists()) {
             PDDocument doc;
             try {
